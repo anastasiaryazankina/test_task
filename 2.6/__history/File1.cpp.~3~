@@ -1,0 +1,63 @@
+#pragma hdrstop
+#pragma argsused
+
+#ifdef _WIN32
+#include <tchar.h>
+#else
+  typedef char _TCHAR;
+  #define _tmain main
+#endif
+
+#include <stdio.h>
+#include <iostream>
+#include <stdio.h>
+#include <fstream>
+#include <string>
+#include <clocale>
+#include <sstream>
+#include <cstdio>
+using namespace std;
+
+int space_existing(string t){
+  int cnt;
+  int n = t.size();
+  char mass[n];
+  for (int i = 0; i < n-1; i++) {
+	if (mass[i] == '!') break;
+	if (mass[i] == ' ')
+	  cnt++;
+	}
+  return cnt;
+}
+
+int character_existing(string t){
+  int n = t.size();
+  char mass[n];
+  for (int i = 0; i < n-1; i++) {
+	if (mass[i] == '!') break;
+	if (mass[i] == 'u') {
+	return 0;
+	}
+  }
+}
+
+int _tmain(int argc, _TCHAR* argv[]){
+  setlocale(LC_CTYPE, "rus");
+  ifstream in ("input.txt");
+  if (!in){
+	throw runtime_error("Can't open file");
+  }
+  ofstream out("output.txt");
+  string line;
+  while(getline(in, line)){
+	out<<line<<endl;
+	out<<"Count of spaces - "<<space_existing(line)<<endl;
+	out<<"u existing - "<<character_existing(line)<<endl;
+  }
+  in.close();
+  out.close();
+  cout<<"File is written!"<<endl;
+  system("pause");
+  return 0;
+}
+
