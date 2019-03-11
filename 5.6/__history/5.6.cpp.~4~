@@ -1,0 +1,80 @@
+#pragma hdrstop
+#pragma argsused
+
+#ifdef _WIN32
+#include <tchar.h>
+#else
+  typedef char _TCHAR;
+  #define _tmain main
+#endif
+
+#include <stdio.h>
+#include <fstream>
+#include <iostream>
+#include <string.h>
+#include <cstring>
+#include <conio.h>
+#include <cstdlib>
+#include <stdlib.h>
+#include <vector.h>
+
+using namespace std;
+   /*	Сведения об ученике состоят из
+	его имени и фамилии и названия клас-са (года обучения и буквы),
+	 в котором он учится. Дан файл, содержа-щий сведения об учениках школы.
+	 Собрать в файле g сведения об уче-никах 9-х и 10-х классов,
+	  поместив вначале сведения об учениках клас-са 9а,
+	затем 9б и т. д., затем 10а, 106 и т. д.
+
+	  */
+struct Student{
+  string name;
+  string surname;
+  string class_number;
+ // int class_number; //номер класса
+ // char class_letter; //буква класса
+};
+
+void explode_line(string s, string arr[]){
+  char *ins = new char[s.size() + 1];
+  strcpy(ins, s.c_str());
+  char *word = strtok(ins, " ");
+  string w(word);
+  arr[0] = w;
+  int i=1;
+  while (word = strtok(NULL, " ")){
+	std::string w(word);
+	arr[i++] = w;
+  }
+  return ;
+}
+
+int _tmain(int argc, _TCHAR* argv[]){
+  ifstream in ("input.txt");
+  if (!in){
+	throw runtime_error("Can't open file");
+  }
+
+  ofstream out("output.txt");
+  string line;
+  string arr[3];
+  vector<Student> arr9,arr10;
+
+
+  while(getline(in, line)){
+	explode_line(line, arr);
+	if ( (arr[2].find("10")==0) || (arr[2][0] == '9') ) {
+	  Student stud = {arr[0], arr[1], arr[2]};
+	  if (arr[2][0] == '9')
+		arr9.push_back(stud)
+	  else
+		arr10.push_back(stud);
+	};
+  }
+
+  in.close();
+  out.close();
+  cout<<"File is written!"<<endl;
+  system("pause");
+  return 0;
+}

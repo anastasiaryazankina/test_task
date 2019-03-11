@@ -1,0 +1,62 @@
+#pragma hdrstop
+#pragma argsused
+
+#ifdef _WIN32
+#include <tchar.h>
+#else
+  typedef char _TCHAR;
+  #define _tmain main
+#endif
+
+#include <stdio.h>
+#include <fstream>
+#include <iostream>
+#include <string.h>
+#include <cstring>
+#include <conio.h>
+#include <cstdlib>
+#include <stdlib.h>
+using namespace std;
+   /*	Сведения об ученике состоят из
+	его имени и фамилии и названия клас-са (года обучения и буквы),
+	 в котором он учится. Дан файл, содержа-щий сведения об учениках школы.
+	 Собрать в файле g сведения об уче-никах 9-х и 10-х классов,
+	  поместив вначале сведения об учениках клас-са 9а,
+	затем 9б и т. д., затем 10а, 106 и т. д.    */
+struct Student{
+  string name;
+  string surname;
+  int class_number; //номер класса
+  char class_letter; //буква класса
+};
+
+void sort_classes(){
+  for(int j=0; j < (*i).length(); ++j)
+}
+Procedure SortPupilsList(var list:TPupilsList; n:integer);
+Var rec:TPupil; i,j ,k1,k2:integer;
+Begin
+  for i:=2 to n do
+    for j:=i-1 downto 1 do
+      if list[j+1].bKl&ltlist[j].bKl then
+      begin
+        rec:=list[j]; list[j]:=list[j+1]; list[j+1]:=rec;
+      end;
+End;
+
+int _tmain(int argc, _TCHAR* argv[]){
+  ifstream in ("input.txt");
+	if (!in){
+	  throw runtime_error("Can't open file");
+	}
+  ofstream out("output.txt");
+  string line;
+ // string arr[6];
+  //getline(in, line);
+
+  in.close();
+  out.close();
+  cout<<"File is written!"<<endl;
+  system("pause");
+  return 0;
+}
