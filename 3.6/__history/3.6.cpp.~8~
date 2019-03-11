@@ -1,0 +1,133 @@
+#pragma hdrstop
+#pragma argsused
+
+#ifdef _WIN32
+#include <tchar.h>
+#else
+  typedef char _TCHAR;
+  #define _tmain main
+#endif
+
+#include <stdio.h>
+#include <fstream>
+#include <iostream>
+#include <string.h>
+#include <cstring>
+#include <conio.h>
+#include <math.h>
+#include <cstdlib>
+#include <stdlib.h>
+using namespace std;
+  /*	Определить функцию, позволяющую определить лежат ли
+	какие-либо две точки по одну сторону от прямой.
+	Даны координаты вершин двух треугольников.
+	Определить, лежит ли одни из них внутри другого. */
+
+class Point {
+  public:
+	double x,y;
+	Point(double _x, double _y){x=_x;y=_y;} // конструктор класса
+	double getX(){return x;}
+	double getY(){return y;}
+};
+
+class Line {
+  public:
+	double k,b; // коэффициенты прямой
+	Line(Point *p1,Point *p2) {
+	  k = (p2->getY() - p1->getY()) / (p2->getX() - p1->getX());
+	  b = (p1->getY() - ( (p2->getY() - p1->getY())*p1->getX() /
+		 (p2->getX() - p1->getX()) ) );
+	};
+
+	double contains(Point *p){
+	  return p->getY() - k*p->getX()+b;
+	};
+
+	bool points_on_the_same_side(Point *p1,Point *p2){
+	  return contains(p1)*contains(p2)>0;
+	};
+};
+
+class Triangle {
+  public:
+	Point *a,*b,*c;
+	Line *ab,*bc,*ac;
+	Triangle(Point *p1,Point *p2,Point *p3) {
+	  a=p1;
+	  b=p2;
+	  c=p3;
+	  ab=new Line(a,b);
+	  bc=new Line(b,c);
+	  ac=new Line(a,c);
+	};
+
+	double contains(Point *p1){
+	  return ab->points_on_the_same_side(p1, c) &&
+		bc->points_on_the_same_side(p1, a) &&
+		ac->points_on_the_same_side(p1, b);
+	};
+
+};
+
+
+int _tmain(int argc, _TCHAR* argv[]){
+
+  Point *p1 = new Point(1,1);
+  Point *p2 = new Point(2,2);
+  Line *l = new Line(p1,p2);
+
+  ifstream in ("input.txt");
+	if (!in){
+	  throw runtime_error("Can't open file");
+	}
+  ofstream out("output.txt");
+  string line;
+  while(getline(in, line)){
+	double d1 = atof(line);
+	double d2 = strtod(line, 0);
+	Point *p8 = new Point(d1,d2);
+	Point *p9 = new Point(line,0);
+	if (l->points_on_the_same_side(p3,p6))
+	  out<<"Points on the same side!"<<endl;
+	else cout<<"Points on the different sides!"<<endl;
+  }
+  Point *p3 = new Point(3,0);
+  cout<<l->contains(p3);
+  Point *p4 = new Point(0,3);
+  cout<<l->contains(p4);
+  Point *p5 = new Point(3,7);
+  cout<<l->contains(p5);
+  Point *p6 = new Point(4,5);
+  cout<<l->contains(p6);
+  if (l->points_on_the_same_side(p3,p6))
+	  cout<<"points_on_the_same_side!"<<endl;
+  else cout<<"No!"<<endl;
+
+
+  Triangle *abc = new Triangle(p4,p5,p6);
+  Triangle *tr2 = new Triangle(p1,p2,p3);
+
+  if (abc->contains(tr2->a) && abc->contains(tr2->b) && abc->contains(tr2->c))
+	cout<<"inside!"<<endl;
+  else cout<<"outside!"<<endl;
+
+
+
+
+//  ifstream in ("input.txt");
+//  if (!in){
+//	throw runtime_error("Can't open file");
+//  }
+//  ofstream out("output.txt");
+//  string line;
+//  while(getline(in, line)){
+//   out<<process_line(line)<<std::endl;
+//  }
+//  in.close();
+//  out.close();
+//  cout<<"File is written!"<<endl;
+  system("pause");
+  return 0;
+}
+

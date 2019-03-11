@@ -1,0 +1,66 @@
+#pragma hdrstop
+#pragma argsused
+
+#ifdef _WIN32
+#include <tchar.h>
+#else
+  typedef char _TCHAR;
+  #define _tmain main
+#endif
+
+#include <stdio.h>
+#include <fstream>
+#include <iostream>
+#include <string.h>
+#include <cstring>
+#include <conio.h>
+#include <math.h>
+using namespace std;
+  /*	Определить функцию, позволяющую определить лежат ли
+	какие-либо две точки по одну сторону от прямой.
+	Даны координаты вершин двух треугольников.
+	Определить, лежит ли одни из них внутри другого. */
+
+class Point {
+  public:
+	double x,y;
+  Point();
+	Point(double X, double Y); // конструктор класса
+	double getX();
+	double getY();
+};
+
+class Line {
+  public:
+	double k,b; // коэффициенты прямой
+  public:
+	Line(double a,double b); // конструктор класса
+	  contained_point(Point p1,Point p2);          // еще один конструктор  найти к и б
+	float get_k(){
+		return (p2.getY() - p1.getY()) / (p2.getX() - p1.getX());
+	}
+	float get_b(){
+		return (p1.getY() - ( (p2.getY() - p1.getY())*p1.getX() /
+		 (p2.getX() - p1.getX()) ) );
+	}
+
+}
+
+  Point(double _x = 0.0, double _y =0.0);
+int _tmain(int argc, _TCHAR* argv[]){
+  ifstream in ("input.txt");
+  if (!in){
+	throw runtime_error("Can't open file");
+  }
+  ofstream out("output.txt");
+  string line;
+  while(getline(in, line)){
+   out<<process_line(line)<<std::endl;
+  }
+  in.close();
+  out.close();
+  cout<<"File is written!"<<endl;
+  system("pause");
+  return 0;
+}
+

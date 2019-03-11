@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.380,=C:\Users\Настя\Documents\Embarcadero\Studio\Projects\Project3PCH1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.457,C:\Users\Настя\Documents\Embarcadero\Studio\Projects\3.6\3.6PCH1.h=C:\Users\Настя\Documents\Embarcadero\Studio\Projects\3.6\Project3PCH1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.488,=C:\Users\Настя\Documents\Embarcadero\Studio\Projects\File1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.009,C:\Users\Настя\Documents\Embarcadero\Studio\Projects\3.6\Project3PCH1.h=C:\Users\Настя\Documents\Embarcadero\Studio\Projects\Project3PCH1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.332,C:\Users\Настя\Documents\Embarcadero\Studio\Projects\3.6\3.6.cpp=C:\Users\Настя\Documents\Embarcadero\Studio\Projects\File1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.143,C:\Users\Настя\Documents\Embarcadero\Studio\Projects\3.6\3.6.cbproj=C:\Users\Настя\Documents\Embarcadero\Studio\Projects\3.6\3.6.cbproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.465,C:\Users\Настя\Documents\Embarcadero\Studio\Projects\3.6\3.6.cbproj=C:\Users\Настя\Documents\Embarcadero\Studio\Projects\Project3.cbproj</Transaction>
+  </Transactions>
+</BorlandProject>
