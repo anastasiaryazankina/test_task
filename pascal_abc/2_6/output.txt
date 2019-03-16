@@ -1,0 +1,12 @@
+Count of spaces - 0
+u - not exist
+Count of spaces - 0
+u - exist 
+Count of spaces - 1
+u - exist 
+Count of spaces - 2
+u - not exist
+Count of spaces - 0
+u - not exist
+Count of spaces - 0
+u - exist 
